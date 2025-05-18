@@ -2,3 +2,4 @@ venv
 checkpoints
 spark_data
 best_spark_model
+nltk_data

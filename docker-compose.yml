@@ -43,6 +43,8 @@ services:
       - ./:/workspace
       - ./checkpoints:/tmp/checkpoints
       - ./spark_data:/tmp/spark_data
+      - ./nltk_data:/opt/nltk_data
+      - ./spark_data/prod_model:/spark_data/prod_model
     working_dir: /workspace
     environment:
       - SPARK_MODE=master
