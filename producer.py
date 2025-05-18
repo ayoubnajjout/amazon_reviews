@@ -64,8 +64,7 @@ def main():
             # Print information for monitoring
             print(f"Sent message {message_count}: Product {review['asin']}")
            
-            # Delay of 1.5 seconds between messages
-            time.sleep(1.5)
+            time.sleep(2)
        
         print(f"All done! Sent {message_count} messages to Kafka.")
        
