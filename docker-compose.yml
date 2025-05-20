@@ -1,5 +1,4 @@
 version: '3'
-
 services:
   zookeeper:
     image: confluentinc/cp-zookeeper:7.3.0
@@ -32,6 +31,12 @@ services:
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
       KAFKA_JMX_PORT: 9101
       KAFKA_JMX_HOSTNAME: localhost
+    healthcheck:
+      test: ["CMD", "kafka-broker-api-versions", "--bootstrap-server=kafka:9092"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 15s
 
   spark:
     image: bitnami/spark:3.5.0
@@ -46,6 +51,7 @@ services:
       - ./spark_data:/tmp/spark_data
       - ./nltk_data:/opt/nltk_data
       - ./spark_data/prod_model:/spark_data/prod_model
+      - ./start-services.sh:/start-services.sh
     working_dir: /workspace
     environment:
       - SPARK_MODE=master
@@ -55,7 +61,9 @@ services:
       - SPARK_SSL_ENABLED=no
     depends_on:
       - kafka
-
+      - mongodb
+    command: ["bash", "-c", "/workspace/start-services.sh"]
+    
   kafka-ui:
     image: provectuslabs/kafka-ui:latest
     container_name: kafka-ui
@@ -79,6 +87,11 @@ services:
       - mongodb_data:/data/db
     environment:
       - MONGO_INITDB_DATABASE=amazon_reviews
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "'db.runCommand({ping:1})'", "--quiet"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
 
   mongo-express:
     image: mongo-express:latest
@@ -89,7 +102,8 @@ services:
       - ME_CONFIG_MONGODB_SERVER=mongodb
       - ME_CONFIG_MONGODB_PORT=27017
     depends_on:
-      - mongodb
+      mongodb:
+        condition: service_healthy
 
 volumes:
   mongodb_data:
