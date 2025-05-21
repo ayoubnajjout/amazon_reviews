@@ -8,13 +8,10 @@ pip install nltk uvicorn numpy fastapi pyspark pymongo
 # Setup NLTK resources
 echo "🔍 Setting up NLTK resources..."
 python /workspace/download_nltk.py
-# Setup NLTK resources first
-echo "🔍 Setting up NLTK resources..."
-python /workspace/download_nltk.py
 
 # Start Spark streaming as a background process
 echo "🚀 Starting Spark Streaming application..."
-spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0 /workspace/spark_streaming.py &
+spark-submit --master spark://spark-master:7077 --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0 /workspace/spark_streaming.py &
 SPARK_PID=$!
 
 # Give Spark streaming a moment to initialize
