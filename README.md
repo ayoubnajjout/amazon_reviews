@@ -3,6 +3,8 @@
 ## Overview
 This project analyzes Amazon customer reviews using a visual workflow represented in the provided diagram (amazon_reviews.drawio.svg). The system processes review data to extract insights and trends.
 
+https://github.com/user-attachments/assets/89959671-443e-4216-9e56-1c12d3dcfc49
+
 ## Diagram Description
 
 ![Architecture](https://github.com/user-attachments/assets/5d573e29-5ba9-44be-a9bb-17487255dc83)
