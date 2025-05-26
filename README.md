@@ -4,14 +4,15 @@
 This project analyzes Amazon customer reviews using a visual workflow represented in the provided diagram (amazon_reviews.drawio.svg). The system processes review data to extract insights and trends.
 
 ## Diagram Description
+
+![architecture](https://github.com/user-attachments/assets/5d573e29-5ba9-44be-a9bb-17487255dc83)
+
 The project workflow is visualized in an SVG diagram created with draw.io, showing:
 - Data input from Amazon reviews
 - Processing components
 - Analysis modules
 - Output visualization
-
-![Untitled Diagram drawio](https://github.com/user-attachments/assets/a6d3d46b-5171-4099-97c4-188acf1295bf)
-
+- 
 ## Key Features
 - Review sentiment analysis
 - Product rating trends
