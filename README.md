@@ -5,7 +5,7 @@ This project analyzes Amazon customer reviews using a visual workflow represente
 
 ## Diagram Description
 
-![architecture](https://github.com/user-attachments/assets/5d573e29-5ba9-44be-a9bb-17487255dc83)
+![Architecture](https://github.com/user-attachments/assets/5d573e29-5ba9-44be-a9bb-17487255dc83)
 
 The project workflow is visualized in an SVG diagram created with draw.io, showing:
 - Data input from Amazon reviews
